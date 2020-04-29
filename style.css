@@ -1,0 +1,128 @@
+body{
+    background-image: url(background/summer-bedroom-night.jpg);
+    background-size: cover;
+    padding: 0;
+    margin:0;
+    height: 100%;
+}
+
+#lamparita{
+    position: fixed;
+    left:50%;
+    top:0;
+}
+
+#cable{
+    position: relative;
+    top:0;
+    left:50%;
+    height: 150px;
+    width: 3px;
+    background-color: rgba(19, 18, 18, 0.849);
+    margin: 0;
+
+    animation: moov-cable .9s ease-in-out infinite alternate;
+}
+
+#cable:after{
+    content:" ";
+    left:-4px;
+    top:100%;
+    position: absolute;
+    border-bottom: 15px solid #000000;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    height: 0;
+    width: 4px;
+}
+
+#content-lamparita{
+    position: relative;
+}
+
+input{
+    position: absolute;
+    top:150px;
+    height: 70px;
+    width: 90px;
+    border-radius: 100%;
+    cursor: pointer;
+    opacity: 0;
+    left:-45px;
+    z-index: 100;
+}
+
+input[value="off"]:checked ~ #cable{
+    box-shadow: -80px -10px 7px 0 rgba(0,0,0,0.1);
+}
+
+input[value="off"]:checked ~ #cable:after{
+    box-shadow: -80px -10px 10px -2px rgba(0,0,0,0.1);
+}
+
+input[value="on"] {
+    top: 150px;
+}
+
+input[value="off"] {
+    top: -100px;
+}
+
+input[value="on"]:checked {
+    top: -100px;
+}
+
+input[value="on"]:checked + input[value="off"] {
+    top: 150px;
+}
+
+label{
+    width: 51px;
+    height: 51px;
+    top: 164px;
+    position: absolute;
+    left: 0;
+    margin-left: -22px;
+    border-radius: 100%;
+
+    animation: moov-foco .9s ease-in-out 0s infinite alternate;
+}
+
+input[value="off"]:checked ~ label{
+    background: rgba(255,255,255,0.03);
+    box-shadow: inset 0px 1px 5px rgba(255,255,255,0.1), inset 0px 2px 20px rgba(255,255,255,0.07), -80px -15px 15px -5px rgba(0,0,0,0.1);
+}
+
+input[value="on"]:checked ~ label {
+    background: rgba(255,255,255,1);
+    box-shadow: 0px 0px 10px rgba(255,255,255,0.8), 0px 0px 30px rgba(255,255,255,0.8), 0px 0px 50px rgba(255,255,255,0.6), 0px 0px 70px rgba(255,255,255,0.6), -80px -15px 120px 0px rgba(255,255,255,0.4);
+}
+
+input[value="off"]:checked ~ label:after {
+    content: " ";
+    width: 15px;
+    height: 15px;
+    top: 0;
+    position: absolute;
+    left: 0;
+    margin-left: 15px;
+    border-radius: 100%;
+    border: 2px solid rgba(255,255,255,0.03);
+}
+
+@keyframes moov-cable {
+    from {
+      transform: rotate(5deg);
+    }
+    to {
+      transform: rotate(-5deg);
+    }
+}
+
+@keyframes moov-foco{
+    from {
+        transform: rotate(3deg) translate(-16.4px,-1px);
+    } to {
+        transform: rotate(-3deg) translate(16.4px,-1px);
+    }
+}
